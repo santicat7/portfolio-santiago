@@ -3,25 +3,42 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #fafaf8; /* fondo casi blanco, cálido */
+  --fg: #111111; /* texto principal, casi negro */
+  --muted: #6b6b6b; /* texto secundario, gris */
+  --line: #e5e5e0; /* líneas divisorias sutiles */
+  --accent: #111111; /* acento sobrio, mismo negro */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+  }
+
+  ::selection {
+    background-color: var(--fg);
+    color: var(--bg);
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
