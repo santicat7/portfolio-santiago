@@ -5,7 +5,7 @@ export const site = {
   nombre: "Santiago Caccia",
   titulo: "Diseñador Gráfico · UX/UI · Identidad de Marca",
   email: "santicaccia@gmail.com",
-  cv: "/cv-santiago.pdf",
+  cv: "/CV - Santiago Caccia.pdf",
   foto: "/foto-santiago.png",
   redes: {
     linkedin: "https://www.linkedin.com/in/santiago-caccia-065b29182",
