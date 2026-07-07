@@ -28,6 +28,14 @@ export const metadata: Metadata = {
       "Product & Brand Designer with 10+ years of experience. I design and build brands, websites and digital products end-to-end. Founder of Nikato Estudio.",
     type: "website",
     locale: "en_US",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Santiago Caccia — Product & Brand Designer" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Santiago Caccia — Product & Brand Designer",
+    description:
+      "Product & Brand Designer with 10+ years of experience. I design and build brands, websites and digital products end-to-end.",
+    images: ["/og.jpg"],
   },
 };
 

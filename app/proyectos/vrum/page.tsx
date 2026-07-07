@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   title: "Vrüm — Santiago Caccia",
   description:
     "A dealership management platform designed and built end-to-end, solo — now running in production.",
+  openGraph: {
+    title: "Vrüm — Santiago Caccia",
+    description:
+      "A dealership management platform designed and built end-to-end, solo — now running in production.",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Vrüm — dealership management platform" }],
+  },
 };
 
 const fraunces = Fraunces({
@@ -65,10 +71,18 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Heading({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function Heading({
+  children,
+  className = "",
+  color = INK,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  color?: string;
+}) {
   return (
     <h2
-      style={{ fontFamily: "var(--font-case-display)", color: INK }}
+      style={{ fontFamily: "var(--font-case-display)", color }}
       className={`text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl ${className}`}
     >
       {children}
@@ -76,9 +90,17 @@ function Heading({ children, className = "" }: { children: React.ReactNode; clas
   );
 }
 
-function Body({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function Body({
+  children,
+  className = "",
+  color = INK,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  color?: string;
+}) {
   return (
-    <p style={{ color: INK }} className={`text-pretty text-lg leading-relaxed opacity-90 ${className}`}>
+    <p style={{ color }} className={`text-pretty text-lg leading-relaxed opacity-90 ${className}`}>
       {children}
     </p>
   );
@@ -142,7 +164,7 @@ function ProcessDiagram() {
   return (
     <div className="flex flex-col items-stretch gap-3 md:flex-row md:items-center md:justify-between md:gap-2">
       {steps.map((step, i) => (
-        <div key={step} className="flex items-center gap-3 md:flex-1 md:flex-col md:gap-3">
+        <div key={step} className="flex items-center gap-3 md:flex-1 md:gap-2">
           <div
             style={{ borderColor: LINE, fontFamily: "var(--font-case-mono)", color: INK }}
             className="flex w-full items-center justify-center rounded-full border px-4 py-3 text-center text-[11px] font-medium uppercase tracking-[0.12em] md:text-xs"
@@ -275,24 +297,35 @@ export default function VrumPage() {
               </p>
             </Wide>
 
-            {/* ── BLOQUE 6a — STOCK (img 3 + video, misma fila) ────────── */}
-            <section>
+            {/* ── BLOQUE 6a — STOCK (img 3 + video, misma fila, banda oscura) ── */}
+            <section
+              className="py-20 md:py-28"
+              style={{
+                background: "linear-gradient(170deg, #201d17 0%, #171411 55%, #100e0b 100%)",
+              }}
+            >
               <Wide>
                 <div className="mb-12 max-w-[760px]">
-                  <Heading className="text-2xl sm:text-3xl">Stock</Heading>
+                  <p
+                    style={{ fontFamily: "var(--font-case-mono)", color: "#7ce0b3" }}
+                    className="mb-4 text-xs font-medium uppercase tracking-[0.2em]"
+                  >
+                    Inside the product
+                  </p>
+                  <Heading className="text-2xl sm:text-3xl" color={PAPER}>Stock</Heading>
                   <div className="mt-5 space-y-4">
-                    <Body className="text-base">
+                    <Body className="text-base" color="rgba(246,242,234,0.85)">
                       The inventory module a salesperson checks between
                       customers — status at a glance, potential profit per
                       unit, and a full editable profile for every car.
                     </Body>
-                    <Body className="text-base">
+                    <Body className="text-base" color="rgba(246,242,234,0.85)">
                       Each unit tracks more than a listing: purchase cost,
                       sale price, real-time profit, post-purchase expenses,
                       and Uruguay-specific data like padrón and matrícula —
                       all in one place.
                     </Body>
-                    <Body className="text-base">
+                    <Body className="text-base" color="rgba(246,242,234,0.85)">
                       Stock adapts by context: a compact mobile view for
                       checking inventory on the lot, and a fuller desktop
                       dashboard for daily management back at the office.
@@ -302,7 +335,13 @@ export default function VrumPage() {
 
                 <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-14">
                   <div className="md:col-span-9">
-                    <Pic src="3-stock-dashboard-desktop.png" alt="Vrüm — stock dashboard on desktop" w={1400} h={787} />
+                    <Pic
+                      src="3-stock-dashboard-desktop.png"
+                      alt="Vrüm — stock dashboard on desktop"
+                      w={1400}
+                      h={787}
+                      className="shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
+                    />
                   </div>
                   <div className="md:col-span-3">
                     <div className="mx-auto w-full max-w-[260px]">
@@ -311,11 +350,11 @@ export default function VrumPage() {
                         loop
                         muted
                         playsInline
-                        className="w-full rounded-2xl shadow-[0_24px_70px_rgba(28,26,22,0.18)] md:rounded-3xl"
+                        className="w-full rounded-2xl shadow-[0_30px_80px_rgba(0,0,0,0.5)] md:rounded-3xl"
                         src={`${IMG}/stock-detalle-ficha.mp4`}
                       />
                       <p
-                        style={{ fontFamily: "var(--font-case-mono)", color: MUTED }}
+                        style={{ fontFamily: "var(--font-case-mono)", color: "rgba(246,242,234,0.55)" }}
                         className="mt-4 text-center text-[10px] uppercase tracking-[0.14em]"
                       >
                         Unit detail — live profit recalculation
@@ -381,7 +420,7 @@ export default function VrumPage() {
                     interested&rdquo; contact form.
                   </Body>
                 </div>
-                <Pic src="7-.png" alt="Vrüm — public car listing page" w={1400} h={787} />
+                <Pic src="7-public-listing.png" alt="Vrüm — public car listing page" w={1400} h={787} />
               </Wide>
             </section>
 
