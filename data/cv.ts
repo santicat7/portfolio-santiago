@@ -4,26 +4,19 @@ export type Servicio = { titulo: string; descripcion: string };
 
 export const servicios: Servicio[] = [
   {
-    titulo: "Identidad de Marca",
+    titulo: "Product Design",
+    descripcion:
+      "Diseño de producto digital de punta a punta: flujos, interfaz, sistema y desarrollo funcional.",
+  },
+  {
+    titulo: "Brand Identity & Art Direction",
     descripcion:
       "Naming, identidad visual y sistemas de marca coherentes y adaptables.",
   },
   {
-    titulo: "Dirección de Arte",
-    descripcion: "Dirección creativa de proyectos visuales y campañas.",
-  },
-  {
-    titulo: "Fotografía & Contenido Visual",
-    descripcion: "Eventos, estudio, producto y contenido para redes.",
-  },
-  {
-    titulo: "UX/UI Design",
+    titulo: "Web Development",
     descripcion:
-      "Diseño de interfaces y experiencias digitales centradas en el usuario.",
-  },
-  {
-    titulo: "Social Media Design",
-    descripcion: "Estrategia y diseño de contenido visual para marcas.",
+      "Sitios y plataformas construidos con código (HTML/CSS/JS, Next.js) — no solo maquetados.",
   },
 ];
 
@@ -31,19 +24,14 @@ export type Experiencia = { rol: string; lugar: string; periodo: string };
 
 export const experiencia: Experiencia[] = [
   {
-    rol: "Founder & Brand Designer",
-    lugar: "Nikato Studio",
+    rol: "Founder & Lead Designer",
+    lugar: "Nikato Estudio",
     periodo: "2016 – Presente",
   },
   {
     rol: "Diseñador Gráfico",
     lugar: "Tata Consultancy Services / TCS",
     periodo: "2 años",
-  },
-  {
-    rol: "Coordinador de Producción",
-    lugar: "La Chacra & La Toscana Eventos",
-    periodo: "3 años · Paysandú",
   },
 ];
 
@@ -76,5 +64,5 @@ export const herramientasIA: string[] = [
 
 export const idiomas = [
   { idioma: "Español", nivel: "Nativo" },
-  { idioma: "Inglés", nivel: "Avanzado" },
+  { idioma: "Inglés", nivel: "Nivel profesional" },
 ];

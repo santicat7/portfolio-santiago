@@ -6,16 +6,21 @@ import type { Proyecto } from "@/data/proyectos";
 type ProyectoCardProps = {
   proyecto: Proyecto;
   priority?: boolean;
+  featured?: boolean;
 };
 
-export function ProyectoCard({ proyecto, priority = false }: ProyectoCardProps) {
+export function ProyectoCard({
+  proyecto,
+  priority = false,
+  featured = false,
+}: ProyectoCardProps) {
   return (
     <Link href={`/proyectos/${proyecto.slug}`} className="group block">
       <Media
         src={proyecto.imagenPortada}
         alt={`Portada del proyecto ${proyecto.titulo}`}
-        aspect="aspect-[4/3]"
-        sizes="(max-width: 768px) 100vw, 50vw"
+        aspect={featured ? "aspect-[16/9]" : "aspect-[4/3]"}
+        sizes={featured ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
         priority={priority}
         label={proyecto.categoria}
         imgClassName="transition-transform duration-700 ease-out-soft group-hover:scale-[1.04]"
@@ -26,10 +31,22 @@ export function ProyectoCard({ proyecto, priority = false }: ProyectoCardProps) 
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
             {proyecto.categoria}
           </p>
-          <h3 className="mt-2 font-display text-xl font-medium tracking-tight text-fg sm:text-2xl">
+          <h3
+            className={
+              featured
+                ? "mt-2 font-display text-3xl font-medium tracking-tight text-fg sm:text-4xl"
+                : "mt-2 font-display text-xl font-medium tracking-tight text-fg sm:text-2xl"
+            }
+          >
             {proyecto.titulo}
           </h3>
-          <p className="mt-2 max-w-md text-pretty text-sm leading-relaxed text-muted">
+          <p
+            className={
+              featured
+                ? "mt-3 max-w-2xl text-pretty text-base leading-relaxed text-muted sm:text-lg"
+                : "mt-2 max-w-md text-pretty text-sm leading-relaxed text-muted"
+            }
+          >
             {proyecto.resumen}
           </p>
         </div>

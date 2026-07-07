@@ -20,17 +20,18 @@ export const translations = {
     ],
     hero: {
       badge: "Abierto a nuevas oportunidades",
-      titulo: "Diseñador Gráfico · UX/UI · Identidad de Marca",
+      titulo: "Product & Brand Designer",
       descripcion:
-        "Diseñador con más de 10 años creando identidades de marca, dirección de arte y experiencias visuales que funcionan.",
+        "Diseño y construyo marcas, productos y webs de punta a punta. 10+ años de experiencia. Fundador de Nikato Estudio.",
       verProyectos: "Ver proyectos",
       descargarCV: "Descargar CV",
     },
     sobreMi: {
       eyebrow: "01 — Perfil",
       titulo: "Sobre mí",
-      p1: "Soy Santiago, diseñador uruguayo con más de diez años dando forma a marcas. Fundé Nikato Studio, donde lideré más de 30 proyectos de identidad, naming y dirección de arte para clientes de rubros muy distintos.",
-      p2: "Mi forma de trabajar combina el pensamiento estructurado del diseño de sistemas con un ojo entrenado en fotografía y contenido visual. Hoy estoy ampliando mi práctica hacia el diseño de UX/UI, buscando crecer dentro de un equipo creativo donde pueda aportar tanto la mirada estratégica como la ejecución.",
+      p1: "Soy Santiago, diseñador uruguayo con más de diez años de experiencia en marca, web y producto digital. Fundé Nikato Estudio, donde dirijo un equipo de diseñadores en proyectos de identidad, web y producto para clientes de rubros muy distintos.",
+      p2: "Mi forma de trabajar no se detiene en la propuesta: diseño y construyo el producto final. Vrüm, mi proyecto más reciente, es una plataforma completa para automotoras que diseñé y desarrollé de principio a fin — de los flujos de usuario al sistema funcionando.",
+      p3: "Combino pensamiento estratégico de marca con capacidad técnica real, y sumo IA en mis flujos de trabajo para moverme más rápido de la idea al producto terminado.",
     },
     proyectos: {
       eyebrow: "02 — Trabajo",
@@ -49,26 +50,19 @@ export const translations = {
       titulo: "Lo que hago",
       items: [
         {
-          titulo: "Identidad de Marca",
+          titulo: "Product Design",
+          descripcion:
+            "Diseño de producto digital de punta a punta: flujos, interfaz, sistema y desarrollo funcional.",
+        },
+        {
+          titulo: "Brand Identity & Art Direction",
           descripcion:
             "Naming, identidad visual y sistemas de marca coherentes y adaptables.",
         },
         {
-          titulo: "Dirección de Arte",
-          descripcion: "Dirección creativa de proyectos visuales y campañas.",
-        },
-        {
-          titulo: "Fotografía & Contenido Visual",
-          descripcion: "Eventos, estudio, producto y contenido para redes.",
-        },
-        {
-          titulo: "UX/UI Design",
+          titulo: "Web Development",
           descripcion:
-            "Diseño de interfaces y experiencias digitales centradas en el usuario.",
-        },
-        {
-          titulo: "Social Media Design",
-          descripcion: "Estrategia y diseño de contenido visual para marcas.",
+            "Sitios y plataformas construidos con código (HTML/CSS/JS, Next.js) — no solo maquetados.",
         },
       ],
     },
@@ -82,19 +76,14 @@ export const translations = {
       cvBtn: "Descargar CV completo (PDF)",
       trabajos: [
         {
-          rol: "Founder & Brand Designer",
-          lugar: "Nikato Studio",
+          rol: "Founder & Lead Designer",
+          lugar: "Nikato Estudio",
           periodo: "2016 – Presente",
         },
         {
           rol: "Diseñador Gráfico",
           lugar: "Tata Consultancy Services / TCS",
           periodo: "2 años",
-        },
-        {
-          rol: "Coordinador de Producción",
-          lugar: "La Chacra & La Toscana Eventos",
-          periodo: "3 años · Paysandú",
         },
       ],
       educacion: {
@@ -104,7 +93,7 @@ export const translations = {
       },
       idiomas: [
         { idioma: "Español", nivel: "Nativo" },
-        { idioma: "Inglés", nivel: "Avanzado" },
+        { idioma: "Inglés", nivel: "Nivel profesional" },
       ],
     },
     contacto: {
@@ -114,7 +103,7 @@ export const translations = {
         "Estoy abierto a nuevas oportunidades y colaboraciones. Escribime y conversamos.",
     },
     footer: {
-      tagline: "Diseño & Identidad · Uruguay",
+      tagline: "Product & Brand Design · Uruguay",
     },
   },
 
@@ -127,17 +116,18 @@ export const translations = {
     ],
     hero: {
       badge: "Open to new opportunities",
-      titulo: "Graphic Designer · UX/UI · Brand Identity",
+      titulo: "Product & Brand Designer",
       descripcion:
-        "Designer with over 10 years creating brand identities, art direction and visual experiences that work.",
+        "I design and build brands, products and websites end-to-end. 10+ years of experience. Founder of Nikato Estudio.",
       verProyectos: "View projects",
       descargarCV: "Download CV",
     },
     sobreMi: {
       eyebrow: "01 — Profile",
       titulo: "About me",
-      p1: "I'm Santiago, a Uruguayan designer with over ten years shaping brands. I founded Nikato Studio, where I've led more than 30 identity, naming and art direction projects for clients across very different industries.",
-      p2: "My way of working combines the structured thinking of systems design with an eye trained in photography and visual content. I'm currently expanding my practice into UX/UI design, looking to grow within a creative team where I can contribute both strategic vision and hands-on execution.",
+      p1: "I'm Santiago, a Uruguay-based designer with over ten years of experience across brand, web and digital product. I founded Nikato Estudio, where I lead a team of designers on identity, web and product work for clients across very different industries.",
+      p2: "My work doesn't stop at the proposal: I design and build the final product. Vrüm, my most recent project, is a complete platform for car dealerships that I designed and developed end-to-end — from user flows to a fully working system.",
+      p3: "I combine strategic brand thinking with real technical ability, and bring AI into my workflow to move faster from idea to finished product.",
     },
     proyectos: {
       eyebrow: "02 — Work",
@@ -156,25 +146,19 @@ export const translations = {
       titulo: "What I do",
       items: [
         {
-          titulo: "Brand Identity",
+          titulo: "Product Design",
           descripcion:
-            "Naming, visual identity and coherent, adaptable brand systems.",
+            "End-to-end digital product design: user flows, interface, design system and functional build.",
         },
         {
-          titulo: "Art Direction",
-          descripcion: "Creative direction for visual projects and campaigns.",
+          titulo: "Brand Identity & Art Direction",
+          descripcion:
+            "Naming, visual identity and brand systems that are coherent and adaptable.",
         },
         {
-          titulo: "Photography & Visual Content",
-          descripcion: "Events, studio, product and social media content.",
-        },
-        {
-          titulo: "UX/UI Design",
-          descripcion: "Interface and user-centered digital experience design.",
-        },
-        {
-          titulo: "Social Media Design",
-          descripcion: "Visual content strategy and design for brands.",
+          titulo: "Web Development",
+          descripcion:
+            "Sites and platforms built with real code (HTML/CSS/JS, Next.js) — not just mockups.",
         },
       ],
     },
@@ -188,19 +172,14 @@ export const translations = {
       cvBtn: "Download full CV (PDF)",
       trabajos: [
         {
-          rol: "Founder & Brand Designer",
-          lugar: "Nikato Studio",
+          rol: "Founder & Lead Designer",
+          lugar: "Nikato Estudio",
           periodo: "2016 – Present",
         },
         {
           rol: "Graphic Designer",
           lugar: "Tata Consultancy Services / TCS",
           periodo: "2 years",
-        },
-        {
-          rol: "Production Coordinator",
-          lugar: "La Chacra & La Toscana Eventos",
-          periodo: "3 years · Paysandú",
         },
       ],
       educacion: {
@@ -210,7 +189,7 @@ export const translations = {
       },
       idiomas: [
         { idioma: "Spanish", nivel: "Native" },
-        { idioma: "English", nivel: "Advanced" },
+        { idioma: "English", nivel: "Professional working proficiency" },
       ],
     },
     contacto: {
@@ -220,7 +199,7 @@ export const translations = {
         "I'm open to new opportunities and collaborations. Reach out and let's talk.",
     },
     footer: {
-      tagline: "Design & Identity · Uruguay",
+      tagline: "Product & Brand Design · Uruguay",
     },
   },
 } as const;
@@ -234,17 +213,17 @@ interface LangCtx {
 }
 
 const LangContext = createContext<LangCtx>({
-  lang: "es",
-  t: translations.es,
+  lang: "en",
+  t: translations.en as unknown as T,
   toggle: () => {},
 });
 
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>("es");
+  const [lang, setLang] = useState<Lang>("en");
 
   useEffect(() => {
     const saved = localStorage.getItem("lang") as Lang | null;
-    if (saved === "en") setLang("en");
+    if (saved === "es") setLang("es");
   }, []);
 
   const toggle = () => {

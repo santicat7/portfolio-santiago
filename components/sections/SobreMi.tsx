@@ -30,6 +30,7 @@ export function SobreMi() {
           <div className="max-w-xl space-y-6 text-lg leading-relaxed text-fg/90 sm:text-xl">
             <p>{t.sobreMi.p1}</p>
             <p>{t.sobreMi.p2}</p>
+            <p>{t.sobreMi.p3}</p>
           </div>
         </Reveal>
       </div>

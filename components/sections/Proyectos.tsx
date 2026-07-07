@@ -22,6 +22,9 @@ export function Proyectos() {
       ? proyectosDestacados
       : proyectosDestacados.filter((p) => p.categoria === activeTab);
 
+  const featured = filtered.find((p) => p.slug === "vrum");
+  const resto = filtered.filter((p) => p.slug !== "vrum");
+
   return (
     <Section id="proyectos" className="border-t border-line">
       <Reveal>
@@ -55,13 +58,23 @@ export function Proyectos() {
           </div>
         </Reveal>
       ) : (
-        <div className="grid gap-x-8 gap-y-14 md:grid-cols-2">
-          {filtered.map((proyecto, i) => (
-            <Reveal key={proyecto.slug} delay={i * 0.08}>
-              <ProyectoCard proyecto={proyecto} priority={i === 0} />
+        <>
+          {featured ? (
+            <Reveal delay={0.06} className="mb-14">
+              <ProyectoCard proyecto={featured} priority featured />
             </Reveal>
-          ))}
-        </div>
+          ) : null}
+
+          {resto.length > 0 ? (
+            <div className="grid gap-x-8 gap-y-14 md:grid-cols-2">
+              {resto.map((proyecto, i) => (
+                <Reveal key={proyecto.slug} delay={i * 0.08}>
+                  <ProyectoCard proyecto={proyecto} priority={!featured && i === 0} />
+                </Reveal>
+              ))}
+            </div>
+          ) : null}
+        </>
       )}
     </Section>
   );

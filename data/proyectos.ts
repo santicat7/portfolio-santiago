@@ -22,6 +22,18 @@ export type Proyecto = {
 
 export const proyectos: Proyecto[] = [
   {
+    slug: "vrum",
+    titulo: "Vrüm",
+    cliente: "Vrüm",
+    categoria: "Producto Digital",
+    anio: "2026",
+    resumen:
+      "Plataforma de gestión de inventario y ventas para automotoras, que reemplaza planillas y grupos de WhatsApp desordenados por un sistema centralizado en tiempo real.",
+    rol: "Product Designer & Full Stack Developer",
+    destacado: true,
+    imagenPortada: "/proyectos/vrum/8.png",
+  },
+  {
     slug: "amarga-lorenzo",
     titulo: "Amarga Lorenzo",
     cliente: "Amarga Lorenzo",
@@ -59,18 +71,6 @@ export const proyectos: Proyecto[] = [
     destacado: true,
     imagenPortada: "/proyectos/mundo-flip/0.png",
     // Este proyecto usa una página de caso a medida (components/casos/mundo-flip).
-  },
-  {
-    slug: "vrum",
-    titulo: "Vrüm",
-    cliente: "Vrüm",
-    categoria: "Producto Digital",
-    anio: "2026",
-    resumen:
-      "Plataforma de gestión de inventario y ventas para automotoras, que reemplaza planillas y grupos de WhatsApp desordenados por un sistema centralizado en tiempo real.",
-    rol: "Product Designer & Full Stack Developer",
-    destacado: true,
-    imagenPortada: "/proyectos/vrum/8.png",
   },
   {
     slug: "logo-collection",

@@ -19,15 +19,15 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://santiagocaccia.vercel.app"),
-  title: "Santiago Caccia — Diseñador Gráfico · UX/UI · Identidad de Marca",
+  title: "Santiago Caccia — Product & Brand Designer",
   description:
-    "Portfolio de Santiago Caccia. Diseñador con más de 10 años creando identidades de marca, dirección de arte y experiencias visuales.",
+    "Product & Brand Designer with 10+ years of experience. I design and build brands, websites and digital products end-to-end. Founder of Nikato Estudio.",
   openGraph: {
-    title: "Santiago Caccia — Diseñador Gráfico · UX/UI · Identidad de Marca",
+    title: "Santiago Caccia — Product & Brand Designer",
     description:
-      "Portfolio de Santiago Caccia. Diseñador con más de 10 años creando identidades de marca, dirección de arte y experiencias visuales.",
+      "Product & Brand Designer with 10+ years of experience. I design and build brands, websites and digital products end-to-end. Founder of Nikato Estudio.",
     type: "website",
-    locale: "es_ES",
+    locale: "en_US",
   },
 };
 
@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="bg-bg text-fg font-sans antialiased">
         <LangProvider>
           <MouseAura />
