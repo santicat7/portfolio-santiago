@@ -42,11 +42,15 @@ function Wide({ children, className = "" }: { children: React.ReactNode; classNa
   );
 }
 
-function Narrow({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+/**
+ * Bloque de texto: siempre el mismo ancho máximo y siempre anclado al mismo
+ * borde izquierdo que las imágenes (el padding de Wide) — sin rag.
+ */
+function Text({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`mx-auto w-full max-w-[760px] px-6 ${className}`}>
-      {children}
-    </div>
+    <Wide>
+      <div className={`max-w-[760px] ${className}`}>{children}</div>
+    </Wide>
   );
 }
 
@@ -112,21 +116,22 @@ function Pic({
   );
 }
 
-/** Bloque split: imagen entera de un lado, texto del otro. En mobile apila imagen arriba. */
+/**
+ * Bloque split: texto siempre a la izquierda (mismo borde que las imágenes),
+ * imagen a la derecha. En mobile apila texto arriba, imagen abajo.
+ */
 function SplitBlock({
   image,
-  imageSide,
   children,
 }: {
   image: React.ReactNode;
-  imageSide: "left" | "right";
   children: React.ReactNode;
 }) {
   return (
-    <Wide className="md:max-w-[1200px]">
-      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16">
-        <div className={imageSide === "left" ? "md:order-1" : "md:order-2"}>{image}</div>
-        <div className={imageSide === "left" ? "md:order-2" : "md:order-1"}>{children}</div>
+    <Wide>
+      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-14">
+        <div className="max-w-[760px] md:col-span-7">{children}</div>
+        <div className="md:col-span-5">{image}</div>
       </div>
     </Wide>
   );
@@ -163,7 +168,7 @@ export default function VrumPage() {
       <main style={{ background: PAPER }}>
         <article className="overflow-hidden pb-28 md:pb-40">
 
-          {/* ── BLOQUE 1 — COVER ──────────────────────────────────────────── */}
+          {/* ── BLOQUE 1 — COVER (img 1) ──────────────────────────────────── */}
           <section className="pt-16 md:pt-24">
             <Wide>
               <h1
@@ -172,7 +177,7 @@ export default function VrumPage() {
               >
                 Vrüm
               </h1>
-              <p style={{ color: INK }} className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed opacity-85 sm:text-xl">
+              <p style={{ color: INK }} className="mt-6 max-w-[760px] text-pretty text-lg leading-relaxed opacity-85 sm:text-xl">
                 A dealership management platform designed and built end-to-end,
                 solo — now running in production.
               </p>
@@ -184,7 +189,7 @@ export default function VrumPage() {
               </p>
 
               <div className="mt-12 md:mt-16">
-                <Pic src="cover-login.png" alt="Vrüm — login screen" w={1400} h={787} priority />
+                <Pic src="1-cover-login.png" alt="Vrüm — login screen" w={1400} h={787} priority />
               </div>
             </Wide>
           </section>
@@ -192,7 +197,7 @@ export default function VrumPage() {
           <div className="space-y-24 pt-24 md:space-y-36 md:pt-36">
 
             {/* ── BLOQUE 2 — META BAR ──────────────────────────────────── */}
-            <Narrow className="max-w-[820px]">
+            <Text>
               <dl className="grid grid-cols-2 gap-x-8 gap-y-7 border-y py-8 sm:grid-cols-4" style={{ borderColor: LINE }}>
                 {[
                   { label: "Role", value: "Product Designer & Developer" },
@@ -213,10 +218,10 @@ export default function VrumPage() {
                   </div>
                 ))}
               </dl>
-            </Narrow>
+            </Text>
 
             {/* ── BLOQUE 3 — THE PROBLEM ───────────────────────────────── */}
-            <Narrow>
+            <Text>
               <Eyebrow>The Problem</Eyebrow>
               <div className="space-y-5">
                 <Body>
@@ -230,12 +235,12 @@ export default function VrumPage() {
                   how a dealership actually works day to day.
                 </Body>
               </div>
-            </Narrow>
+            </Text>
 
-            {/* ── BLOQUE 4 — SOLUTION OVERVIEW ─────────────────────────── */}
+            {/* ── BLOQUE 4 — SOLUTION OVERVIEW (img 2) ─────────────────── */}
             <section>
               <Wide>
-                <Narrow className="mb-12 max-w-[820px] px-0">
+                <div className="mb-12 max-w-[760px]">
                   <Eyebrow>The Solution</Eyebrow>
                   <Body className="text-xl sm:text-2xl">
                     Vrüm is a complete operating system for car dealerships:
@@ -243,14 +248,14 @@ export default function VrumPage() {
                     business analytics in one platform — mobile-first for the
                     sales floor, desktop-ready for the office.
                   </Body>
-                </Narrow>
-                <Pic src="overview-collage.png" alt="Vrüm — product overview across mobile and desktop" w={1400} h={787} />
+                </div>
+                <Pic src="2-overview-collage.png" alt="Vrüm — product overview across mobile and desktop" w={1400} h={787} />
               </Wide>
             </section>
 
             {/* ── BLOQUE 5 — MY ROLE & PROCESS ─────────────────────────── */}
             <Wide>
-              <Narrow className="mb-14 max-w-[820px] px-0">
+              <div className="mb-14 max-w-[760px]">
                 <Eyebrow>Process</Eyebrow>
                 <Heading className="text-2xl sm:text-3xl md:text-4xl">
                   My Role &amp; Process
@@ -260,51 +265,46 @@ export default function VrumPage() {
                   flows, interface, design system, and the working product
                   deployed in production.
                 </Body>
-              </Narrow>
+              </div>
 
               <ProcessDiagram />
 
-              <p style={{ color: MUTED }} className="mt-10 text-center text-sm italic">
+              <p style={{ color: MUTED }} className="mt-10 text-sm italic">
                 No handoff. Every decision made in the interface, I also
                 implemented in code.
               </p>
             </Wide>
 
-            {/* ── BLOQUE 6a — STOCK ────────────────────────────────────── */}
+            {/* ── BLOQUE 6a — STOCK (img 3 + video, misma fila) ────────── */}
             <section>
               <Wide>
-                <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-14">
-                  <div className="md:order-2 md:col-span-8">
-                    <Pic src="stock-dashboard-desktop.png" alt="Vrüm — stock dashboard on tablet" w={1025} h={787} />
-                  </div>
-                  <div className="md:order-1 md:col-span-4">
-                    <Heading className="text-2xl sm:text-3xl">Stock</Heading>
-                    <div className="mt-5 space-y-4">
-                      <Body className="text-base">
-                        The inventory module a salesperson checks between
-                        customers — status at a glance, potential profit per
-                        unit, and a full editable profile for every car.
-                      </Body>
-                      <Body className="text-base">
-                        Each unit tracks more than a listing: purchase cost,
-                        sale price, real-time profit, post-purchase expenses,
-                        and Uruguay-specific data like padrón and matrícula —
-                        all in one place.
-                      </Body>
-                      <Body className="text-base">
-                        Stock adapts by context: a compact mobile view for
-                        checking inventory on the lot, and a fuller desktop
-                        dashboard for daily management back at the office.
-                      </Body>
-                    </div>
+                <div className="mb-12 max-w-[760px]">
+                  <Heading className="text-2xl sm:text-3xl">Stock</Heading>
+                  <div className="mt-5 space-y-4">
+                    <Body className="text-base">
+                      The inventory module a salesperson checks between
+                      customers — status at a glance, potential profit per
+                      unit, and a full editable profile for every car.
+                    </Body>
+                    <Body className="text-base">
+                      Each unit tracks more than a listing: purchase cost,
+                      sale price, real-time profit, post-purchase expenses,
+                      and Uruguay-specific data like padrón and matrícula —
+                      all in one place.
+                    </Body>
+                    <Body className="text-base">
+                      Stock adapts by context: a compact mobile view for
+                      checking inventory on the lot, and a fuller desktop
+                      dashboard for daily management back at the office.
+                    </Body>
                   </div>
                 </div>
 
-                <div className="mt-10 grid grid-cols-1 items-center gap-10 md:mt-14 md:grid-cols-12 md:gap-14">
-                  <div className="md:col-span-8">
-                    <Pic src="stock-mobile-duo.png" alt="Vrüm — mobile stock views" w={1400} h={587} />
+                <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-14">
+                  <div className="md:col-span-9">
+                    <Pic src="3-stock-dashboard-desktop.png" alt="Vrüm — stock dashboard on desktop" w={1400} h={787} />
                   </div>
-                  <div className="md:col-span-4">
+                  <div className="md:col-span-3">
                     <div className="mx-auto w-full max-w-[260px]">
                       <video
                         autoPlay
@@ -326,12 +326,11 @@ export default function VrumPage() {
               </Wide>
             </section>
 
-            {/* ── BLOQUE 6b — CLIENTS (split, imagen izquierda) ────────── */}
+            {/* ── BLOQUE 6b — CLIENTS (img 4) ──────────────────────────── */}
             <SplitBlock
-              imageSide="left"
               image={
                 <div className="mx-auto w-full max-w-[440px]">
-                  <Pic src="clients-pipeline.png" alt="Vrüm — clients pipeline" w={697} h={787} />
+                  <Pic src="4-clients-pipeline.png" alt="Vrüm — clients pipeline" w={697} h={787} />
                 </div>
               }
             >
@@ -351,12 +350,11 @@ export default function VrumPage() {
               </div>
             </SplitBlock>
 
-            {/* ── BLOQUE 6d — STATS (split, imagen derecha) ────────────── */}
+            {/* ── BLOQUE 6c — STATS (img 6) ────────────────────────────── */}
             <SplitBlock
-              imageSide="right"
               image={
                 <div className="mx-auto w-full max-w-[500px]">
-                  <Pic src="stats-duo.png" alt="Vrüm — business stats on mobile" w={806} h={787} />
+                  <Pic src="6-stats-duo.png" alt="Vrüm — business stats on mobile" w={806} h={787} />
                 </div>
               }
             >
@@ -371,10 +369,10 @@ export default function VrumPage() {
               </div>
             </SplitBlock>
 
-            {/* ── BLOQUE 6e — PUBLIC LISTING ───────────────────────────── */}
+            {/* ── BLOQUE 6d — PUBLIC LISTING (img 7) ───────────────────── */}
             <section>
               <Wide>
-                <Narrow className="mb-12 max-w-[820px] px-0">
+                <div className="mb-12 max-w-[760px]">
                   <Heading>Public Listing</Heading>
                   <Body className="mt-5">
                     The flow doesn&rsquo;t end with the salesperson. Every car
@@ -382,15 +380,15 @@ export default function VrumPage() {
                     directly over WhatsApp — with a one-tap &ldquo;I&rsquo;m
                     interested&rdquo; contact form.
                   </Body>
-                </Narrow>
-                <Pic src="public-listing.png" alt="Vrüm — public car listing page" w={1400} h={787} />
+                </div>
+                <Pic src="7-.png" alt="Vrüm — public car listing page" w={1400} h={787} />
               </Wide>
             </section>
 
-            {/* ── BLOQUE 7 — DESIGN SYSTEM ─────────────────────────────── */}
+            {/* ── BLOQUE 7 — DESIGN SYSTEM (img 8) ─────────────────────── */}
             <section>
               <Wide>
-                <Narrow className="mb-14 max-w-[820px] px-0">
+                <div className="mb-14 max-w-[760px]">
                   <Heading>Design System</Heading>
                   <Body className="mt-5">
                     Dark, technical, and built for the sales floor: a
@@ -398,15 +396,13 @@ export default function VrumPage() {
                     for a dashboard feel, and a full light mode that holds the
                     same system without losing identity.
                   </Body>
-                </Narrow>
-                <div className="mx-auto w-full max-w-[640px]">
-                  <Pic src="simulator-modes.png" alt="Vrüm — light and dark mode side by side" w={637} h={787} />
                 </div>
+                <Pic src="8-simulador.png" alt="Vrüm — financing simulator, light and dark mode" w={1400} h={787} />
               </Wide>
             </section>
 
             {/* ── BLOQUE 8 — FROM DESIGN TO CODE ───────────────────────── */}
-            <Narrow>
+            <Text>
               <Heading className="text-2xl sm:text-3xl">From Design to Code</Heading>
               <div className="mt-5 space-y-5">
                 <Body>
@@ -424,14 +420,13 @@ export default function VrumPage() {
                   Stack: Next.js, Supabase, Vercel.
                 </p>
               </div>
-            </Narrow>
+            </Text>
 
-            {/* ── BLOQUE 9 — BUILT FOR REAL DEALERSHIPS (split, imagen izq) ─ */}
+            {/* ── BLOQUE 9 — BUILT FOR REAL DEALERSHIPS (img 10) ───────── */}
             <SplitBlock
-              imageSide="left"
               image={
                 <div className="mx-auto w-full max-w-[440px]">
-                  <Pic src="team-profile.png" alt="Vrüm — team profile screen" w={697} h={787} />
+                  <Pic src="10-team-profile.png" alt="Vrüm — team profile screen" w={697} h={787} />
                 </div>
               }
             >
@@ -448,82 +443,85 @@ export default function VrumPage() {
             </SplitBlock>
 
             {/* ── BLOQUE 10 — DECISIONS & TRADEOFFS ────────────────────── */}
-            <section>
-              <Narrow className="max-w-[900px]">
-                <Heading>Decisions &amp; Tradeoffs</Heading>
-                <p
-                  style={{ fontFamily: "var(--font-case-mono)", color: ACCENT }}
-                  className="mt-8 text-xs font-medium uppercase tracking-[0.18em]"
-                >
-                  Potential profit vs. real profit
-                </p>
-                <Body className="mt-4">
-                  Stock shows potential profit at a glance for quick
-                  decisions. The unit detail page shows real profit, after
-                  logged expenses — because a salesperson and an owner need
-                  different numbers at different moments.
-                </Body>
+            <Text>
+              <Heading>Decisions &amp; Tradeoffs</Heading>
+              <p
+                style={{ fontFamily: "var(--font-case-mono)", color: ACCENT }}
+                className="mt-8 text-xs font-medium uppercase tracking-[0.18em]"
+              >
+                Potential profit vs. real profit
+              </p>
+              <Body className="mt-4">
+                Stock shows potential profit at a glance for quick
+                decisions. The unit detail page shows real profit, after
+                logged expenses — because a salesperson and an owner need
+                different numbers at different moments.
+              </Body>
 
-                <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <div className="rounded-2xl border p-7" style={{ borderColor: LINE }}>
-                    <p
-                      style={{ fontFamily: "var(--font-case-mono)", color: MUTED }}
-                      className="text-[10px] uppercase tracking-[0.16em]"
-                    >
-                      Stock card
-                    </p>
-                    <p
-                      style={{ fontFamily: "var(--font-case-display)", color: INK }}
-                      className="mt-3 text-2xl font-medium sm:text-3xl"
-                    >
-                      Potential profit
-                    </p>
-                    <p style={{ color: MUTED }} className="mt-2 text-sm leading-relaxed">
-                      One glance between customers, for quick decisions on the
-                      floor.
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border p-7" style={{ borderColor: LINE }}>
-                    <p
-                      style={{ fontFamily: "var(--font-case-mono)", color: MUTED }}
-                      className="text-[10px] uppercase tracking-[0.16em]"
-                    >
-                      Unit detail
-                    </p>
-                    <p
-                      style={{ fontFamily: "var(--font-case-display)", color: INK }}
-                      className="mt-3 text-2xl font-medium sm:text-3xl"
-                    >
-                      Real profit
-                    </p>
-                    <p style={{ color: MUTED }} className="mt-2 text-sm leading-relaxed">
-                      Recalculated automatically as expenses are logged against
-                      the unit.
-                    </p>
-                  </div>
+              <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <div className="rounded-2xl border p-7" style={{ borderColor: LINE }}>
+                  <p
+                    style={{ fontFamily: "var(--font-case-mono)", color: MUTED }}
+                    className="text-[10px] uppercase tracking-[0.16em]"
+                  >
+                    Stock card
+                  </p>
+                  <p
+                    style={{ fontFamily: "var(--font-case-display)", color: INK }}
+                    className="mt-3 text-2xl font-medium sm:text-3xl"
+                  >
+                    Potential profit
+                  </p>
+                  <p style={{ color: MUTED }} className="mt-2 text-sm leading-relaxed">
+                    One glance between customers, for quick decisions on the
+                    floor.
+                  </p>
                 </div>
-              </Narrow>
+                <div className="rounded-2xl border p-7" style={{ borderColor: LINE }}>
+                  <p
+                    style={{ fontFamily: "var(--font-case-mono)", color: MUTED }}
+                    className="text-[10px] uppercase tracking-[0.16em]"
+                  >
+                    Unit detail
+                  </p>
+                  <p
+                    style={{ fontFamily: "var(--font-case-display)", color: INK }}
+                    className="mt-3 text-2xl font-medium sm:text-3xl"
+                  >
+                    Real profit
+                  </p>
+                  <p style={{ color: MUTED }} className="mt-2 text-sm leading-relaxed">
+                    Recalculated automatically as expenses are logged against
+                    the unit.
+                  </p>
+                </div>
+              </div>
+            </Text>
+
+            {/* ── BLOQUE 11 — RESULTS (img 11) ─────────────────────────── */}
+            <section>
+              <Wide>
+                <div className="mb-12 max-w-[760px]">
+                  <Heading className="text-2xl sm:text-3xl">Results</Heading>
+                  <Body className="mt-5">
+                    Vrüm currently manages 500+ vehicles across multiple
+                    dealerships in Uruguay, replacing what used to run on
+                    spreadsheets and WhatsApp for each of them.
+                  </Body>
+                </div>
+                <Pic src="11-stock-mobile-duo.png" alt="Vrüm — mobile stock views" w={1400} h={587} />
+              </Wide>
             </section>
 
-            {/* ── BLOQUE 11 — RESULTS ──────────────────────────────────── */}
-            <Narrow>
-              <Heading className="text-2xl sm:text-3xl">Results</Heading>
-              <Body className="mt-5">
-                Vrüm currently manages 500+ vehicles across multiple
-                dealerships in Uruguay, replacing what used to run on
-                spreadsheets and WhatsApp for each of them.
-              </Body>
-            </Narrow>
-
             {/* ── BLOQUE 12 — REFLECTION ───────────────────────────────── */}
-            <Narrow>
+            <Text>
               <Heading className="text-2xl sm:text-3xl">What&rsquo;s Next</Heading>
               <Body className="mt-5">
                 Deeper reporting, refining the financing simulator with real
                 lender rates, and expanding features based on feedback from
                 dealerships already using the platform.
               </Body>
-            </Narrow>
+            </Text>
 
           </div>
 

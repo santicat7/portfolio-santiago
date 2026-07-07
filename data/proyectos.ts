@@ -31,7 +31,7 @@ export const proyectos: Proyecto[] = [
       "Plataforma de gestión de inventario y ventas para automotoras, que reemplaza planillas y grupos de WhatsApp desordenados por un sistema centralizado en tiempo real.",
     rol: "Product Designer & Full Stack Developer",
     destacado: true,
-    imagenPortada: "/proyectos/vrum/8.png",
+    imagenPortada: "/proyectos/vrum/8-simulador.png",
   },
   {
     slug: "amarga-lorenzo",
