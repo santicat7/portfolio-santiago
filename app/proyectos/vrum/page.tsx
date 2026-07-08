@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Vrüm — Santiago Caccia",
     description:
       "A dealership management platform designed and built end-to-end, solo — now running in production.",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Vrüm — dealership management platform" }],
+    images: [{ url: "/og-vrum.jpg", width: 1200, height: 630, alt: "Vrüm — dealership management platform" }],
   },
 };
 

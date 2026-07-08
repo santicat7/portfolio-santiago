@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://santiagocaccia.vercel.app"),
+  metadataBase: new URL("https://portfolio-santiago-gray.vercel.app"),
   title: "Santiago Caccia — Product & Brand Designer",
   description:
     "Product & Brand Designer with 10+ years of experience. I design and build brands, websites and digital products end-to-end. Founder of Nikato Estudio.",
